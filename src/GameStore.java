@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class GameStore {
 
-    private User user;
-    private ArrayList<Game> games;
+    private final User user;
+    private final ArrayList<Game> games;
 
     public GameStore() throws FileNotFoundException, NumberFormatException {
         this.user = new User();
@@ -49,5 +49,10 @@ public class GameStore {
     public String removeGame(String id) throws Exception {
         Game game = findGame(id);
         return user.removeGame(game);
+    }
+
+
+    public void showShoppingList(){
+        user.showShoppingList();
     }
 }

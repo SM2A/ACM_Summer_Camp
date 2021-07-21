@@ -24,4 +24,12 @@ public class Game {
     public String getId() {
         return id;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

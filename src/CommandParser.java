@@ -5,7 +5,7 @@
 
 public class CommandParser {
 
-    private GameStore gameStore;
+    private final GameStore gameStore;
 
     public CommandParser(GameStore gameStore) {
         this.gameStore = gameStore;
@@ -13,10 +13,16 @@ public class CommandParser {
 
     public String parseCommand(String... command) throws Exception {
         try {
-            if (command[0].equals("AddGame")) {
-                return gameStore.addGame(command[1]);
-            } else if (command[0].equals("RemoveGame")){
-                return gameStore.removeGame(command[1]);
+            switch (command[0]) {
+                case "AddGame":
+                    return gameStore.addGame(command[1]);
+                case "RemoveGame":
+                    return gameStore.removeGame(command[1]);
+                case "ShowShoppingList":
+                    gameStore.showShoppingList();
+                    break;
+                default:
+                    throw new Exception("Command Not Found");
             }
         } catch (ArrayIndexOutOfBoundsException exception){
             throw new ArrayIndexOutOfBoundsException("Please enter command correctly");
