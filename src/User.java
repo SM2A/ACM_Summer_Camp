@@ -16,4 +16,18 @@ public class User {
         this.shoppingList = new HashMap<>();
         this.credit = 0;
     }
+
+    private boolean isGameInShoppingCart(Game game){
+        return shoppingList.containsKey(game);
+    }
+
+    public String addGame(Game game){
+        if (isGameInShoppingCart(game)){
+            shoppingList.replace(game,shoppingList.get(game)+1);
+            return "Incremented Successfully";
+        }else {
+            shoppingList.put(game,1);
+            return "Added Successfully";
+        }
+    }
 }

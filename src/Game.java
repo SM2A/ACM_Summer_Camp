@@ -20,4 +20,8 @@ public class Game {
         this.company = company;
         this.quantity = quantity;
     }
+
+    public String getId() {
+        return id;
+    }
 }
