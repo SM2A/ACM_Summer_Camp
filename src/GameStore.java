@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by SM2A
@@ -43,6 +42,7 @@ public class GameStore {
 
     public String addGame(String id) throws Exception {
         Game game = findGame(id);
+        if (game.getQuantity()==0) throw new Exception("This game in not available right now");
         return user.addGame(game);
     }
 
@@ -57,5 +57,11 @@ public class GameStore {
 
     public String addCredit(int value) throws Exception {
         return user.addCredit(value);
+    }
+
+    public String checkout() throws Exception {
+        HashMap<Game,Integer> items = user.checkOut();
+        for (Map.Entry<Game,Integer> item : items.entrySet()) item.getKey().buy(item.getValue());
+        return "Thanks for shopping";
     }
 }

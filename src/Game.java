@@ -32,4 +32,12 @@ public class Game {
     public String getName() {
         return name;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void buy(int q){
+        this.quantity -= q;
+    }
 }

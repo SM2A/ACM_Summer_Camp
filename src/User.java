@@ -1,6 +1,6 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by SM2A
@@ -21,8 +21,18 @@ public class User {
         return shoppingList.containsKey(game);
     }
 
-    public String addGame(Game game){
+    private int shoppingListPrice(){
+        int total = 0;
+        for(Map.Entry<Game,Integer> item : shoppingList.entrySet()){
+            total += item.getKey().getPrice()*item.getValue();
+        }
+        return total;
+    }
+
+    public String addGame(Game game) throws Exception {
         if (isGameInShoppingCart(game)){
+            if (shoppingList.get(game)==game.getQuantity())
+                throw new Exception("Not enough quantity of this game");
             shoppingList.replace(game,shoppingList.get(game)+1);
             return "Incremented Successfully";
         }else {
@@ -48,16 +58,14 @@ public class User {
                     "ID","Name","Quantity","Unit Price","Price");
             for (int i = 0; i <62 ; i++) System.out.print("-");
             System.out.println();
-            int total = 0;
             for(Map.Entry<Game,Integer> item : shoppingList.entrySet()){
-                total += item.getKey().getPrice()*item.getValue();
                 System.out.printf("%3s | %20s | %8s | %10s | %7s%n",
                         item.getKey().getId(),item.getKey().getName(),item.getValue(),
                         item.getKey().getPrice(),item.getKey().getPrice()*item.getValue());
             }
             for (int i = 0; i <62 ; i++) System.out.print("-");
             System.out.println();
-            System.out.printf("Total: %53s%n",total);
+            System.out.printf("Total: %53s%n",shoppingListPrice());
         }
     }
 
@@ -69,5 +77,12 @@ public class User {
         }catch (NumberFormatException exception){
             throw new Exception("Please enter valid credit amount");
         }
+    }
+
+    public HashMap<Game,Integer> checkOut() throws Exception {
+        int price = shoppingListPrice();
+        if (price > credit) throw new Exception("Not enough credit");
+        credit -= price;
+        return shoppingList;
     }
 }

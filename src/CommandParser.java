@@ -23,6 +23,8 @@ public class CommandParser {
                     break;
                 case "AddCredit":
                     return gameStore.addCredit(Integer.parseInt(command[1]));
+                case "Submit":
+                    return gameStore.checkout();
                 default:
                     throw new Exception("Command Not Found");
             }
