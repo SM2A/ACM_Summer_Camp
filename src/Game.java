@@ -37,7 +37,7 @@ public class Game {
         return quantity;
     }
 
-    public void buy(int q){
+    public void buy(int q) {
         this.quantity -= q;
     }
 }

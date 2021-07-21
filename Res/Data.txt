@@ -1,3 +1,10 @@
 1,Assassins Creed,2000,2002,Ubisoft,10
-2,Call Of Duty,5000,2021,Activation,5
+2,Call of Duty,5000,2021,Activation,5
 3,Grand Theft Auto,5600,2007,Rock Star,8
+4,Forza,6000,2020,Play Groud Games,1
+5,Flight Simulator,10000,2021,Microsoft,3
+6,Rainbow Six Siege,3000,2015,Ubisoft,20
+7,Valheim,3700,2021,Iron Gate AB,9
+8,Need for Speed,2500,2018,EA,30
+9,Minecraft,5000,2011,Mojang,200
+10,Fortnite,0,2017,Epic Games,1000

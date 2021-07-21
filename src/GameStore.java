@@ -25,15 +25,15 @@ public class GameStore {
                 games.add(game);
 
             }
-        } catch (FileNotFoundException exception){
+        } catch (FileNotFoundException exception) {
             throw new FileNotFoundException("Data file not found");
-        } catch (NumberFormatException exception){
+        } catch (NumberFormatException exception) {
             throw new NumberFormatException("Invalid data in resource file");
         }
     }
 
     private Game findGame(String id) throws Exception {
-        for (Game game : games){
+        for (Game game : games) {
             if (game.getId().equals(id))
                 return game;
         }
@@ -42,7 +42,7 @@ public class GameStore {
 
     public String addGame(String id) throws Exception {
         Game game = findGame(id);
-        if (game.getQuantity()==0) throw new Exception("This game in not available right now");
+        if (game.getQuantity() == 0) throw new Exception("This game in not available right now");
         return user.addGame(game);
     }
 
@@ -51,17 +51,22 @@ public class GameStore {
         return user.removeGame(game);
     }
 
-    public void showShoppingList(){
+    public void showShoppingList() {
         user.showShoppingList();
     }
 
-    public String addCredit(int value) throws Exception {
-        return user.addCredit(value);
+    public String addCredit(String value) throws Exception {
+        try {
+            return user.addCredit(Integer.parseInt(value));
+        } catch (NumberFormatException exception) {
+            throw new Exception("Please enter valid credit amount");
+        }
     }
 
     public String checkout() throws Exception {
-        HashMap<Game,Integer> items = user.checkOut();
-        for (Map.Entry<Game,Integer> item : items.entrySet()) item.getKey().buy(item.getValue());
+        HashMap<Game, Integer> items = user.checkOut();
+        for (Map.Entry<Game, Integer> item : items.entrySet()) item.getKey().buy(item.getValue());
+        items.clear();
         return "Thanks for shopping";
     }
 }

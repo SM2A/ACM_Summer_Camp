@@ -22,13 +22,13 @@ public class CommandParser {
                     gameStore.showShoppingList();
                     break;
                 case "AddCredit":
-                    return gameStore.addCredit(Integer.parseInt(command[1]));
+                    return gameStore.addCredit(command[1]);
                 case "Submit":
                     return gameStore.checkout();
                 default:
                     throw new Exception("Command Not Found");
             }
-        } catch (ArrayIndexOutOfBoundsException exception){
+        } catch (ArrayIndexOutOfBoundsException exception) {
             throw new ArrayIndexOutOfBoundsException("Please enter command correctly");
         }
         return "";
