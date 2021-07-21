@@ -60,4 +60,14 @@ public class User {
             System.out.printf("Total: %53s%n",total);
         }
     }
+
+    public String addCredit(int value) throws Exception {
+        try {
+            String out = String.format("Credit increased\nCredit = %s", credit + value);
+            this.credit += value;
+            return out;
+        }catch (NumberFormatException exception){
+            throw new Exception("Please enter valid credit amount");
+        }
+    }
 }

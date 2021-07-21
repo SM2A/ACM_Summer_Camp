@@ -21,6 +21,8 @@ public class CommandParser {
                 case "ShowShoppingList":
                     gameStore.showShoppingList();
                     break;
+                case "AddCredit":
+                    return gameStore.addCredit(Integer.parseInt(command[1]));
                 default:
                     throw new Exception("Command Not Found");
             }

@@ -51,8 +51,11 @@ public class GameStore {
         return user.removeGame(game);
     }
 
-
     public void showShoppingList(){
         user.showShoppingList();
+    }
+
+    public String addCredit(int value) throws Exception {
+        return user.addCredit(value);
     }
 }
