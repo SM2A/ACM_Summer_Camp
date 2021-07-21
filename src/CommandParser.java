@@ -15,6 +15,8 @@ public class CommandParser {
         try {
             if (command[0].equals("AddGame")) {
                 return gameStore.addGame(command[1]);
+            } else if (command[0].equals("RemoveGame")){
+                return gameStore.removeGame(command[1]);
             }
         } catch (ArrayIndexOutOfBoundsException exception){
             throw new ArrayIndexOutOfBoundsException("Please enter command correctly");

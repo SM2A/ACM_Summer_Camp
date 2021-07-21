@@ -45,4 +45,9 @@ public class GameStore {
         Game game = findGame(id);
         return user.addGame(game);
     }
+
+    public String removeGame(String id) throws Exception {
+        Game game = findGame(id);
+        return user.removeGame(game);
+    }
 }

@@ -30,4 +30,13 @@ public class User {
             return "Added Successfully";
         }
     }
+
+    public String removeGame(Game game) throws Exception {
+        if (isGameInShoppingCart(game)){
+            shoppingList.remove(game);
+            return "Game removed Successfully";
+        }else {
+            throw new Exception("This game is not in cart");
+        }
+    }
 }
